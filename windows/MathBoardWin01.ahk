@@ -18,7 +18,7 @@ LaTeXMode := false
     global LaTeXMode
     LaTeXMode := !LaTeXMode
     if LaTeXMode {
-        ToolTip("LaTeX Mode ON [CTRL+SHIFT+SPACE] ")
+        ToolTip()
         TrayTip("LaTeX Keyboard", "LaTeX Mode ON", 1)
     } else {
         ToolTip()
