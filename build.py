@@ -1,13 +1,15 @@
-# Script used to customize & archive your
+# Script used to customize your
 # key configurations across mac and windows
 #
 
 import datetime
 import json
+
 import jinja2
 
 BASE = "./templates/keys/keys-base.json"
 CURRENT = "./templates/keys/keys-current.json"
+
 
 # update base key json
 def changeBase(basePath, template):
@@ -35,9 +37,14 @@ def createCurrentKeys(
     return 1
 
 
-def updateTemplate(template, ver, keymap, date=datetime.datetime.now()):
+# updates template based on current key configuration
+def updateTemplate(template, system, ver, keymap, date=datetime.datetime.now()):
 
-    name = f"MathBoardMACv{ver}.keylayout"
+    if system=="mac":
+        name = f"MathBoard{system}v{ver}.keylayout"
+    else:
+        name = f"MathBoard{system}v{ver}.ahk"
+
     out = template.render(
         ver=ver,
         id=-5555 + ver,
@@ -46,11 +53,13 @@ def updateTemplate(template, ver, keymap, date=datetime.datetime.now()):
         keymap=keymap[1],
     )
 
-    with open("./mac/" + name, "w") as f:
+    with open(f"./{system}/{name}", "w") as f:
         f.write(out)
 
+    print(f"UPDATED LAYOUT AT {system}/{name}.")
 
-def build(templatePath="./templates"):
+
+def build(templatePath="./templates", ver=1):
 
     map = ""
     # check to see if keys-current exists
@@ -63,6 +72,9 @@ def build(templatePath="./templates"):
 
         createCurrentKeys()
 
+        with open("./templates/keys/keys-current.json", "r") as f:
+            map = json.loads(f.read())
+
     # render templates using KEYMAP
 
     env = jinja2.Environment(
@@ -70,9 +82,21 @@ def build(templatePath="./templates"):
         autoescape=True,
     )
 
+    # update mac template
+
     updateTemplate(
         template=env.get_template("Tmac.xml.j2"),
-        ver=1,
+        system="mac",
+        ver=ver,
+        keymap=map,
+    )
+
+
+    # update windows template
+    updateTemplate(
+        template=env.get_template("Twin.xml.j2"),
+        system="windows",
+        ver=ver,
         keymap=map,
     )
 

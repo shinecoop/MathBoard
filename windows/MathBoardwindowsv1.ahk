@@ -1,0 +1,260 @@
+#Requires AutoHotkey v2.0
+
+; =============================================================================
+;  LaTeX Keyboard — AutoHotkey v2
+;  Toggle LaTeX mode ON/OFF with F12
+;
+;  A tray tooltip shows the current mode.
+; =============================================================================
+
+LaTeXMode := false
+
+; --- Toggle -------------------------------------------------------------------
+^+Space::
+{
+    global LaTeXMode
+    LaTeXMode := !LaTeXMode
+    if LaTeXMode {
+        ToolTip()
+        TrayTip("LaTeX Keyboard", "LaTeX Mode ON", 1)
+    } else {
+        ToolTip()
+        TrayTip("LaTeX Keyboard", "LaTeX Mode OFF", 1)
+    }
+}
+
+; =============================================================================
+;  Helper — only fires when LaTeX mode is active
+; =============================================================================
+#HotIf LaTeXMode
+
+; =============================================================================
+;  SHIFT LAYER
+; =============================================================================
+
++a:: SendText("a")
+    
++s:: SendText("s")
+    
++d:: SendText("d")
+    
++f:: SendText("f")
+    
++h:: SendText("h")
+    
++g:: SendText("g")
+    
++z:: SendText("z")
+    
++x:: SendText("x")
+    
++c:: SendText("c")
+    
++v:: SendText("v")
+    
++`:: SendText("`")
+    
++b:: SendText("b")
+    
++q:: SendText("q")
+    
++w:: SendText("w")
+    
++e:: SendText("e")
+    
++r:: SendText("r")
+    
++y:: SendText("y")
+    
++t:: SendText("t")
+    
++1:: SendText("1")
+    
++2:: SendText("2")
+    
++3:: SendText("3")
+    
++4:: SendText("4")
+    
++6:: SendText("6")
+    
++5:: SendText("5")
+    
++=:: SendText("=")
+    
++9:: SendText("9")
+    
++7:: SendText("7")
+    
++-:: SendText("-")
+    
++8:: SendText("8")
+    
++0:: SendText("0")
+    
++]:: SendText("]")
+    
++o:: SendText("o")
+    
++u:: SendText("u")
+    
++[:: SendText("[")
+    
++i:: SendText("i")
+    
++p:: SendText("p")
+    
+
++l:: SendText("l")
+    
++j:: SendText("j")
+    
+
++k:: SendText("k")
+    
++;:: SendText(";")
+    
++\:: SendText("\")
+    
++,:: SendText(",")
+    
++/:: SendText("/")
+    
++n:: SendText("n")
+    
++m:: SendText("m")
+    
++.:: SendText(".")
+    
+
++ :: SendText(" ")
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; =============================================================================
+;  ALT LAYER — LaTeX functions & operators
+;  (Use right Alt, or remap as needed. Here we use LAlt for accessibility.)
+; =============================================================================
+
+!a:: SendText("a")
+    
+!s:: SendText("s")
+    
+!d:: SendText("d")
+    
+!f:: SendText("f")
+    
+!h:: SendText("h")
+    
+!g:: SendText("g")
+    
+!z:: SendText("z")
+    
+!x:: SendText("x")
+    
+!c:: SendText("c")
+    
+!v:: SendText("v")
+    
+!`:: SendText("`")
+    
+!b:: SendText("b")
+    
+!q:: SendText("q")
+    
+!w:: SendText("w")
+    
+!e:: SendText("e")
+    
+!r:: SendText("r")
+    
+!y:: SendText("y")
+    
+!t:: SendText("t")
+    
+!1:: SendText("1")
+    
+!2:: SendText("2")
+    
+!3:: SendText("3")
+    
+!4:: SendText("4")
+    
+!6:: SendText("6")
+    
+!5:: SendText("5")
+    
+!=:: SendText("=")
+    
+!9:: SendText("9")
+    
+!7:: SendText("7")
+    
+!-:: SendText("-")
+    
+!8:: SendText("8")
+    
+!0:: SendText("0")
+    
+!]:: SendText("]")
+    
+!o:: SendText("o")
+    
+!u:: SendText("u")
+    
+![:: SendText("[")
+    
+!i:: SendText("i")
+    
+!p:: SendText("p")
+    
+
+!l:: SendText("l")
+    
+!j:: SendText("j")
+    
+
+!k:: SendText("k")
+    
+!;:: SendText(";")
+    
+!\:: SendText("\")
+    
+!,:: SendText(",")
+    
+!/:: SendText("/")
+    
+!n:: SendText("n")
+    
+!m:: SendText("m")
+    
+!.:: SendText(".")
+    
+
+! :: SendText(" ")
+    
+
+
+
+
+
+
+
+
+
+
+
+
+#HotIf
