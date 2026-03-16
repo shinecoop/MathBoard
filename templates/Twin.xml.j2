@@ -1,0 +1,52 @@
+#Requires AutoHotkey v2.0
+
+; =============================================================================
+;  LaTeX Keyboard — AutoHotkey v2
+;  Toggle LaTeX mode ON/OFF with F12
+;
+;  A tray tooltip shows the current mode.
+; =============================================================================
+
+LaTeXMode := false
+
+; --- Toggle -------------------------------------------------------------------
+^+Space::
+{
+    global LaTeXMode
+    LaTeXMode := !LaTeXMode
+    if LaTeXMode {
+        ToolTip()
+        TrayTip("LaTeX Keyboard", "LaTeX Mode ON", 1)
+    } else {
+        ToolTip()
+        TrayTip("LaTeX Keyboard", "LaTeX Mode OFF", 1)
+    }
+}
+
+; =============================================================================
+;  Helper — only fires when LaTeX mode is active
+; =============================================================================
+#HotIf LaTeXMode
+
+; =============================================================================
+;  SHIFT LAYER
+; =============================================================================
+
+{% for key, value in keymap[1].items() -%}
+    {% if keymap[0][key] | length == 1 -%}
+        +{{ keymap[0][key] }}:: SendText("{{ value }}")
+    {% endif %}
+{% endfor %}
+
+; =============================================================================
+;  ALT LAYER — LaTeX functions & operators
+;  (Use right Alt, or remap as needed. Here we use LAlt for accessibility.)
+; =============================================================================
+
+{% for key, value in keymap[2].items() -%}
+    {% if keymap[0][key] | length == 1 -%}
+        !{{ keymap[0][key] }}:: SendText("{{ value }}")
+    {% endif %}
+{% endfor -%}
+
+#HotIf

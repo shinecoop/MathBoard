@@ -32,7 +32,7 @@ Since Windows sucks and their ```.klc``` files are unable to display long string
 Install and run the executable from their page [autohotkey.com/v2](https://www.autohotkey.com/v2/)
 
 #### Acquiring Script
-Clone the repository onto your local machine or simply download the script located in ```/MathBoard/windows``` and save it locally. Then, run the script using the AutoHotKey Service.
+Clone the repository onto you\quadr local machine or simply download the script located in ```/MathBoard/windows``` and save it locally. Then, run the script using the AutoHotKey Service.
 
 You will be able to enter/exit "LaTeX Mode" using a binding listed in the script. As of right now, it is
 
